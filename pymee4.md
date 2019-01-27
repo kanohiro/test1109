@@ -97,6 +97,7 @@ inputAll.close()
 ```
 ---
 + ソースコード(.pyファイル)を配置したフォルダと同じフォルダに配置された「inputSample.txt」を読み込む事ができました。
+
 ![](./img/fileio_flow.png)
 ---
 
