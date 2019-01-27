@@ -155,13 +155,20 @@ while文は、繰り返し処理を回し続けるか、ストップするかを
 ---
 【例文(while文)】
 ```python
-#「sampleList」という名前のリストを作成
-sampleList = [1,2,3,4,5]
+#ランダムで値を取り出す為の準備
+import random
 
-#for文で「sampleList」の中身を一つずつ取り出してループ
-#先頭から取り出して末尾までループする。
-for number in sampleList:
-    print(number)
+#変数を定義
+num = 0
+
+#while文で条件を定義「4以外の数字」
+while num != 4:
+
+#変数numで0-9の乱数を保持する
+	num = random.randint(0,9)
+
+#numを表示
+	print(num)
 ```
 + 出力結果
 ```
