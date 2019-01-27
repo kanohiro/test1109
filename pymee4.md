@@ -61,7 +61,7 @@ for number in sampleList:
 5
 ```
 + リストから値を取得して、先頭から１つずつ値を取り出しながら繰り返し(ループ)処理を実装できました。
-![](./img/for_flow.PNG)
+![](./img/for_flow.png)
 
 ---
 
@@ -97,7 +97,7 @@ inputAll.close()
 ```
 ---
 + ソースコード(.pyファイル)を配置したフォルダと同じフォルダに配置された「inputSample.txt」を読み込む事ができました。
-![](./img/fileio_flow.PNG)
+![](./img/fileio_flow.png)
 ---
 
 ---
@@ -136,7 +136,7 @@ except:
 ---
 + try～exceptを記載する事で、処理に失敗した場合のフォローができる。<br>
 　⇒エラーが発生した箇所でプログラムの実行がする事を防げる。
-![](./img/except_flow.PNG)
+![](./img/except_flow.png)
 ---
 # 思い出せましたか？この知識を前提に、本日の講義を行います。
 ---
@@ -147,7 +147,7 @@ for文は、リストのように個数が決まっているデータに順々�
 while文は、繰り返し処理を回し続けるか、ストップするかを条件式で決めることができます。
 
 ---
-![](./img/while_flow.PNG)
+![](./img/while.png)
 
 ---
 【例文(while文)】
