@@ -181,7 +181,7 @@ while num != 4:
 最初はnumが0なので、while文の条件を満たし、ブロックの中のコードが実行され、0-9の乱数が発生して変数に格納されます。2回目以降もこの動作を繰り返します。「4以外の数字」の条件を満たす間はループを継続し、num が 4 であれば条件を満たさないので、while文はそこで終了します。
 
 ---
-## サンプルプログラムを作ってみましょう(文)
+## サンプルプログラムを作ってみましょう(while文)
 
 【事前準備】
 デスクトップ(どこでもいいです)に作業フォルダを作成し、そこへ以下の名前でテキストファイルを作成して下さい。作成したファイルにサンプルプログラムを記載して保存して下さい。
@@ -190,35 +190,50 @@ while num != 4:
 + ファイル名
 
 ```
-01_for.py
+01_while.py
 ```
 ---
 
 【サンプルプログラム】
 
 ```python
-#「omikujiList」というリストを作成
-omikujiList = ['仕事運 まあまあよし',
-           '恋愛運 よし',
-           '健康運 すこしよし'
-           ]
+#sysモジュールで引数をチェックする準備
+import sys
+import random
 
-#for文で「omikujiList」の中身を一つずつ取り出してループ
-#先頭から取り出して末尾までループする。
-for omikuji in omikujiList:
-    print (omikuji);
+#ファイルを格納するためのリストを準備
+WhileList = []
+
+#引数に読み込むファイルを指定してオープン1行ずつリストに格納
+
+f = open(sys.argv[1], "r",encoding="utf-8")
+line = f.readline()
+
+#while文で処理を定義「取り出した行が "EOF" 以外なら1行ずつWhileListに格納」
+while line != "EOF\n":
+	WhileList.append(line)
+	line = f.readline()
+
+#読み込んだファイルをクローズ
+f.close
+
+#ランダムでリストから結果を取り出し
+kekka = random.choice(WhileList)
+
+#結果を表示
+print(kekka);
 ```
 ---
 コードが書けたら以下のコマンドで実行してみましょう。
 + 実行(windowsの場合)
 
 ```
-py 01_for.py
+py 01_while.py
 ```
 + 実行(その他の場合)
 
 ```
-python3 01_for.py
+python3 01_while.py
 ```
 + 出力結果
 ```
