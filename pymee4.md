@@ -161,13 +161,9 @@ import random
 #変数numの最初の数字を定義
 num = 0
 
-#while文で条件を定義「4以外の数字」
+#while文で条件、および処理を定義「4以外の数字が出るまで変数numで0-9の乱数を表示する」
 while num != 4:
-
-#変数numで0-9の乱数を保持する
 	num = random.randint(0,9)
-
-#numを表示
 	print(num)
 ```
 + 出力結果
