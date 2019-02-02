@@ -207,7 +207,6 @@ import random
 WhileList = []
 
 #引数に読み込むファイルを指定してオープン1行ずつリストに格納
-#それを変数 f として管理
 f = open(sys.argv[1], "r",encoding="utf-8")
 line = f.readline()
 
@@ -219,7 +218,7 @@ while line != "EOF\n":
 #読み込んだファイルをクローズ
 f.close
 
-#ランダムでリストから結果を取り出し
+#ランダムでWhileListから結果を取り出し
 kekka = random.choice(WhileList)
 
 #結果を表示
