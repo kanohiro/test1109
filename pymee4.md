@@ -228,19 +228,22 @@ print(kekka)
 + 実行(windowsの場合)
 
 ```
-py 01_while.py
+py 01_while.py omikujilist.txt
 ```
 + 実行(その他の場合)
 
 ```
-python3 01_while.py
+python3 01_while.py omikujilist.txt
 ```
 + 出力結果
 ```
-仕事運 まあまあよし
-恋愛運 よし
-健康運 すこしよし
+大吉,待人：すぐに来る,失物：足元にあり,恋愛：深入りするな,転居：無理せず待て
 ```
+---
+引数に指定した "omikujifile.txt" から1行ずつ取り出し、EOFの行になったら処理を停止します。<br>
+出来上がったWhileListからランダムに1行取り出し、表示しています。<br>
+しかし、このままだと見ずらいですね。
+
 ---
 # ファイルから文字列を読み込んでみよう
 
