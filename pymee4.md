@@ -287,10 +287,10 @@ f.close()
 ```python
 import sys
 
-#書き込む内容が書かれたファイルをオープン
+#引数に読み込むファイルを指定してオープン
 omikuji = open(sys.argv[1], "r",encoding="utf-8")
 
-#書き込み先のファイルを新規作成
+#書き込み先のファイルを新規作成してオープン
 f = open('write_kekka.txt','x')
 
 #上部飾りを挿入
