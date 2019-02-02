@@ -207,7 +207,6 @@ import random
 WhileList = []
 
 #引数に読み込むファイルを指定してオープン
-#sys.argvで引数をチェック
 f = open(sys.argv[1], "r",encoding="utf-8")
 
 #readline()で1行ずつ読み込み
