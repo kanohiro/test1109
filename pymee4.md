@@ -207,7 +207,7 @@ import random
 WhileList = []
 
 #引数に読み込むファイルを指定してオープン1行ずつリストに格納
-
+#それを変数 f として管理
 f = open(sys.argv[1], "r",encoding="utf-8")
 line = f.readline()
 
