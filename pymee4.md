@@ -221,7 +221,7 @@ f.close
 kekka = random.choice(WhileList)
 
 #結果を表示
-print(kekka);
+print(kekka)
 ```
 ---
 コードが書けたら以下のコマンドで実行してみましょう。
