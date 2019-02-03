@@ -408,6 +408,12 @@ from datetime import datetime
 【事前準備】<br>
 先ほど作成した、02_file_write.pyをコピーして、03_import.py を作成してください。<br>
 
++ ファイル名
+
+```
+03_import.py
+```
+
 ```python
 import sys
 
