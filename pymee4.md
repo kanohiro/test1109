@@ -805,61 +805,25 @@ finally:
 ---
 ## サンプルプログラムを作ってみましょう(まとめ)
 
-前頁を踏まえ、次のコードを作成して下さい。
+これまでの内容を踏まえ、次のコードを作成して下さい。
 
 【事前準備】
-事前準備として、以下の内容を記載した３つのテキストファイルを作業フォルダに保存しておいて下さい。
+以下のテキストファイルをローカルに保存しておいてください。
 
-①
 + ファイル名
 
 ```
-daikiti.txt
+omikujifile.txt
 ```
-+ 記載内容
+また、作業フォルダ内に以下フォルダを作成してください。
 
++ フォルダ名
 ```
-【大吉】
-待人：辛抱強く待つべし
-失物：足元にあり
-恋愛：深入りするな
-転居：無理せず待て
+results
 ```
 
 ---
 
-②
-+ ファイル名
-
-```
-kiti.txt
-```
-+ 記載内容
-
-```
-【吉】
-待人：待てば来る
-失物：見つからず
-恋愛：良い出会いあり
-転居：南東が良し
-```
----
-
-③
-+ ファイル名
-
-```
-kyo.txt
-```
-+ 記載内容
-
-```
-【凶】
-待人：来ない
-失物：増える
-恋愛：刺される
-転居：燃える
-```
 ---
 事前準備したファイルとは別に、以下のファイルを作成して下さい。
 
@@ -873,62 +837,77 @@ kyo.txt
 【サンプルプログラム】(1/3)
 ```python
 import sys
-#ランダムで値を取り出す為の準備
 import random
+import os
+from datetime import datetime
 
-#エラーが発生した際に別処理へ遷移させたい箇所をtry～exceptで囲む。
+#引数にファイルが一つ指定されていることをチェック
+if len(sys.argv) != 2:
+    sys.stderr.write('エラー:引数にファイルを一つ指定してください。\n')
+    sys.exit(1)
+
+#ファイルを格納するためのリストを準備
+KekkaList = []
+
+#引数に読み込むファイルを指定してオープン1行ずつリストに格納
 try:
-
-#おみくじ用ファイルを読み込む
-    daikiti = open("daikiti.txt", "r",encoding="utf-8")
-    kiti    = open("kiti.txt", "r",encoding="utf-8")
-    kyo     = open("kyo.txt", "r",encoding="utf-8")
-
-#読み込んだおみくじ用ファイルを辞書型でまとめる
-    inputOmikuji = {"大吉":daikiti,
-                    "吉":kiti,
-                    "凶":kyo}
-
-#ランダムで選択する為のキーとなる単語をリストで用意
-    omikujiList = inputOmikuji.keys()
-
-#omikujiListの中からランダムで一つ選ぶ
-    randomOmikuji = random.choice(list(omikujiList))
+    f = open(sys.argv[1], "r",encoding="utf-8")
+    line = f.readline()
+    while line != "EOF\n":
+        KekkaList.append(line)
+        line = f.readline()
+    f.close
 ```
 ---
 【サンプルプログラム】(2/3)
 ```python
-#omikujiListからランダムに選んだ運勢(文字列)をキーにしてinputOmikujiにセットしたテキストファイルの中身から選んだ文字列に対応するファイルの中身を読み込む。
-    selectOmikuji = inputOmikuji[randomOmikuji]
+#例外をキャッチした場合の処理内容
+except FileNotFoundError:
+    sys.stderr.write("エラー:指定されたファイルが見つかりません。\n")
+    sys.exit(1)
+except:
+    sys.stderr.write("エラー:その他のエラー。\n")
+    sys.exit(1)
 
-#読み込んだファイルの中身を1行ずつ取り出す。
-    for selectLine in selectOmikuji:
-        print (selectLine, end='');
+#ランダムでリストから結果を取り出し
+kekka = random.choice(KekkaList)
 
-    print('\n')
+#取り出した結果をカンマ区切りでリスト化
+unsei = kekka.split(",")
+
+#出力するファイル名に付与する日付を取得
+hizuke = datetime.now().strftime("%Y-%m-%d")
+
+#出力ファイル名を指定
+unsei_filename = r"./results/unsei_{0}.txt".format(hizuke)
 ```
 ---
 
 【サンプルプログラム】(3/3)
 ```python
-#ファイルが見つからない時は以下のコードが実行される。
+#出力ファイル名でファイルオープンし結果を書き込み
+try:
+    f = open(unsei_filename,'x')
+
+#例外をキャッチした場合の処理内容
+except FileExistsError:
+        sys.stderr.write("エラー:同じ名前のファイルが既に存在しています。\n")
+        sys.exit(1)
 except FileNotFoundError:
-    print("ファイル読み込みエラー！")
-    print(sys.exc_info())
-#その他のエラー発生時は以下のコードが実行される。
-except:
-    print("その他のエラー！")
-    print(sys.exc_info())
-else:
-    print('\nおみくじの結果はどうでしたか？')
-#以下のコードはどんな場合でも実行される。
-finally:
-    if 'daikiti' in locals():
-        daikiti.close()
-    if 'kiti' in locals():
-        kiti.close()
-    if 'kyo' in locals():
-        kyo.close()
+        sys.stderr.write("エラー:ディレクトリが見つかりません。\n")
+        sys.exit(1)
+
+#おみくじの結果を書き込み
+f.write("===============================\n")
+for i in unsei:
+    f.write(i)
+    f.write("\n")
+f.write(hizuke)
+f.write("\n")
+f.write("===============================\n")
+f.close()
+
+print("おみくじの結果を{0}に書込みました！".format(unsei_filename))
 ```
 ---
 + 実行(windowsの場合)
@@ -942,32 +921,41 @@ py 04_summary.py
 python3 04_summary.py
 ```
 ---
-+ 出力結果
-※以下のいずれか
++ 出力結果（unsei_2019-02-03.txt）
 ```
-【大吉】
-待人：辛抱強く待つべし
+===============================
+大吉
+待人：すぐに来る
 失物：足元にあり
 恋愛：深入りするな
 転居：無理せず待て
-おみくじの結果はどうでしたか？
+
+2019-02-03
+===============================
 ```
 ```
-【吉】
+===============================
+吉
 待人：待てば来る
 失物：見つからず
-恋愛：良い出会いあり
-転居：南東が良し
-おみくじの結果はどうでしたか？
+恋愛：よい出会いあり
+転居：南東がよし
+
+2019-02-03
+===============================
 ```
 ```
-【凶】
+===============================
+凶
 待人：来ない
 失物：増える
 恋愛：刺される
 転居：燃える
-おみくじの結果はどうでしたか？
+
+2019-02-03
+===============================
 ```
+なかなか大吉がでませんでした。。
 
 ---
 # みなさん長い間お疲れ様でした！
@@ -975,26 +963,22 @@ python3 04_summary.py
 ---
 
 # 次回予告
-+ 繰り返し処理第２弾
-+ ファイルの書き込み
++ 
++ 
 
-今回の範囲外のお話
-+ with open
 
 ---
 
 # アンケート
 + 今後のよりよい活動のため、アンケートにご協力ください！
 
-![400% center](./img/qr_3rd.png)
+![400% center](./img/.png)
 
-https://questant.jp/q/WP4SJ79K
+https://questant.jp/q/
 
 ---
 # おまけ
-オライリーの「退屈なことはPythonにやらせよう」より、都道府県庁所在地クイズジェネレータのソースコードです。
-今日の知識＋αで読めますので、講義だけでは物足りなかった方はどうぞ。
-https://github.com/oreilly-japan/automatestuff-ja/blob/master/ch08/randomQuizGenerator.py
+
 
 ---
 # ご質問など。。。
