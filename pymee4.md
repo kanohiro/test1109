@@ -374,9 +374,11 @@ datetimeには大きく分けて、3種類のクラスがあります。<br>
 
 <br>
 では、datetimeモジュール全体をimportしてみましょう。
+
 ```
 import datetime
 ```
+
 これで、datetimeモジュールの機能がすべて使えるようになりました。
 
 ---
