@@ -478,6 +478,164 @@ f.close()
 先ほどのファイルの下部に日付が書き込まれましたね！
 
 ---
+
+## サンプルプログラムを作ってみましょう(まとめ)
+
+これまでの内容を踏まえ、次のコードを作成して下さい。
+
+【事前準備】
+以下のテキストファイルをローカルに保存しておいてください。
+
++ ファイル名
+
+```
+omikujifile.txt
+```
+また、作業フォルダ内に以下フォルダを作成してください。
+
++ フォルダ名
+```
+results
+```
+
+---
+
+---
+事前準備したファイルとは別に、以下のファイルを作成して下さい。
+
++ ファイル名
+
+```
+04_summary.py
+```
+---
+
+【サンプルプログラム】(1/3)
+```python
+import sys
+import random
+import os
+from datetime import datetime
+
+#引数にファイルが一つ指定されていることをチェック
+if len(sys.argv) != 2:
+    sys.stderr.write('エラー:引数にファイルを一つ指定してください。\n')
+    sys.exit(1)
+
+#ファイルを格納するためのリストを準備
+KekkaList = []
+
+#引数に読み込むファイルを指定してオープン1行ずつリストに格納
+try:
+    f = open(sys.argv[1], "r",encoding="utf-8")
+    line = f.readline()
+    while line != "EOF\n":
+        KekkaList.append(line)
+        line = f.readline()
+    f.close
+```
+---
+【サンプルプログラム】(2/3)
+```python
+#例外をキャッチした場合の処理内容
+except FileNotFoundError:
+    sys.stderr.write("エラー:指定されたファイルが見つかりません。\n")
+    sys.exit(1)
+except:
+    sys.stderr.write("エラー:その他のエラー。\n")
+    sys.exit(1)
+
+#ランダムでリストから結果を取り出し
+kekka = random.choice(KekkaList)
+
+#取り出した結果をカンマ区切りでリスト化
+unsei = kekka.split(",")
+
+#出力するファイル名に付与する日付を取得
+hizuke = datetime.now().strftime("%Y-%m-%d")
+
+#出力ファイル名を指定
+unsei_filename = r"./results/unsei_{0}.txt".format(hizuke)
+```
+---
+
+【サンプルプログラム】(3/3)
+```python
+#出力ファイル名でファイルオープンし結果を書き込み
+try:
+    f = open(unsei_filename,'x')
+
+#例外をキャッチした場合の処理内容
+except FileExistsError:
+        sys.stderr.write("エラー:同じ名前のファイルが既に存在しています。\n")
+        sys.exit(1)
+except FileNotFoundError:
+        sys.stderr.write("エラー:ディレクトリが見つかりません。\n")
+        sys.exit(1)
+
+#おみくじの結果を書き込み
+f.write("===============================\n")
+for i in unsei:
+    f.write(i)
+    f.write("\n")
+f.write(hizuke)
+f.write("\n")
+f.write("===============================\n")
+f.close()
+
+print("おみくじの結果を{0}に書込みました！".format(unsei_filename))
+```
+---
++ 実行(windowsの場合)
+
+```
+py 04_summary.py
+```
++ 実行(その他の場合)
+
+```
+python3 04_summary.py
+```
+---
++ 出力結果（unsei_2019-02-03.txt）
+```
+===============================
+大吉
+待人：すぐに来る
+失物：足元にあり
+恋愛：深入りするな
+転居：無理せず待て
+
+2019-02-03
+===============================
+```
+```
+===============================
+吉
+待人：待てば来る
+失物：見つからず
+恋愛：よい出会いあり
+転居：南東がよし
+
+2019-02-03
+===============================
+```
+```
+===============================
+凶
+待人：来ない
+失物：増える
+恋愛：刺される
+転居：燃える
+
+2019-02-03
+===============================
+```
+なかなか大吉がでませんでした。。
+
+---
+
+---
 # readline()でファイルの内容を取得
 Pythonでファイルの内容を取得するときには、<br>
 <br>
@@ -660,304 +818,6 @@ with open("sample.txt", "r") as f:
 
 ---
 
-【サンプルプログラム】(1/2)
-```python
-#エラー発生時の詳細取得準備
-import sys
-
-#エラーが発生した際に別処理へ遷移させたい箇所をtry～exceptで囲む。
-try:
-
-#例文として存在しないファイルを指定
-    inputAll = open("exception.txt", "r",encoding="utf-8")
-
-    for inputLine in inputAll:
-        print (inputLine, end='');
-
-    print('\n')
-
-```
----
-【サンプルプログラム】(2/2)
-```python
-#ファイルが見つからない時は以下のコードが実行される。
-#sys.exc_info()でエラーの詳細を確認できる。
-except FileNotFoundError:
-    print("ファイル読み込みエラー！")
-    print(sys.exc_info())
-#その他のエラー発生時は以下のコードが実行される。
-except:
-    print("その他のエラー！")
-    print(sys.exc_info())
-#エラーが発生しなかった場合は以下のコードが実行される。
-else:
-    print('※例外は発生しませんでした')
-#以下のコードはどんな場合でも実行される。
-finally:
-    print('処理終了')
-#ファイルがオープンできている場合のみクローズ処理を実施する。
-    if 'inputAll' in locals():
-        inputAll.close()
-```
-
----
-
-+ 実行(windowsの場合)
-
-```
-py 03_except.py
-```
-+ 実行(その他の場合)
-
-```
-python3 03_except.py
-```
-+ 出力結果
-```
-ファイル読み込みエラー！
-処理終了
-Traceback (most recent call last):
-～
-
-```
----
-## 4つのexcept句
-+ except FileNotFoundError:
-　⇒対象ファイルが存在しない時に実行される
-+ except:
-　⇒全てのエラー発生時に実行される
-+ else:
-　⇒全て正常に処理された場合に実行される
-+ finally:
-　⇒どんな場合でも実行される
-
-## ポイント
-+ 上から順番に処理される
-　⇒exceptを一番上に書くとそこで処理されてしまうので、個別エラー処理を先に書く
-+ sys.exc_info()でエラーの詳細を取得できる
-※事前に「import sys」の記述が必要
-
----
-
-# まとめ(1/3)
-1. 前回のおさらい(リスト/辞書型)
-
-```python
-omikuji = ['大吉 すべてよし',
-           '中吉 まあまあよし',
-           '小吉 よし',
-           '吉 すこしよし',
-           '凶 わるし',
-           ]
-print(omikuji[0])
-```
-```python
-omikuji = {"大吉":"すべてよし",
-           "中吉":"まあまあよし",
-           "小吉":"よし",
-           "吉":"すこしよし",
-           "凶":"わるし",
-           }
-print(omikuji["大吉"])
-```
-
----
-
-# まとめ(2/3)
-2. for文
-```python
-sampleList = [1,2,3,4,5]
-for sample in sampleList:
-    print(sample)
-```
-3. ファイル入出力
-```python
-inputAll = open("inputSample.txt", "r",encoding="utf-8")
-for inputLine in inputAll:
-    print (inputLine, end='');
-print('\n')
-inputAll.close()
-```
-
----
-
-# まとめ(3/3)
-4. 例外
-```python
-try:
-    inputAll = open("exception.txt", "r",encoding="utf-8")
-
-    for inputLine in inputAll:
-        print (inputLine, end='');
-    print('\n')
-
-except FileNotFoundError:
-    print("ファイル読み込みエラー！")
-except:
-    print("エラー！")
-else:
-    print('※例外は発生しませんでした')
-finally:
-    print('処理終了')
-    if 'inputAll' in locals():
-        inputAll.close()
-```
----
-## サンプルプログラムを作ってみましょう(まとめ)
-
-これまでの内容を踏まえ、次のコードを作成して下さい。
-
-【事前準備】
-以下のテキストファイルをローカルに保存しておいてください。
-
-+ ファイル名
-
-```
-omikujifile.txt
-```
-また、作業フォルダ内に以下フォルダを作成してください。
-
-+ フォルダ名
-```
-results
-```
-
----
-
----
-事前準備したファイルとは別に、以下のファイルを作成して下さい。
-
-+ ファイル名
-
-```
-04_summary.py
-```
----
-
-【サンプルプログラム】(1/3)
-```python
-import sys
-import random
-import os
-from datetime import datetime
-
-#引数にファイルが一つ指定されていることをチェック
-if len(sys.argv) != 2:
-    sys.stderr.write('エラー:引数にファイルを一つ指定してください。\n')
-    sys.exit(1)
-
-#ファイルを格納するためのリストを準備
-KekkaList = []
-
-#引数に読み込むファイルを指定してオープン1行ずつリストに格納
-try:
-    f = open(sys.argv[1], "r",encoding="utf-8")
-    line = f.readline()
-    while line != "EOF\n":
-        KekkaList.append(line)
-        line = f.readline()
-    f.close
-```
----
-【サンプルプログラム】(2/3)
-```python
-#例外をキャッチした場合の処理内容
-except FileNotFoundError:
-    sys.stderr.write("エラー:指定されたファイルが見つかりません。\n")
-    sys.exit(1)
-except:
-    sys.stderr.write("エラー:その他のエラー。\n")
-    sys.exit(1)
-
-#ランダムでリストから結果を取り出し
-kekka = random.choice(KekkaList)
-
-#取り出した結果をカンマ区切りでリスト化
-unsei = kekka.split(",")
-
-#出力するファイル名に付与する日付を取得
-hizuke = datetime.now().strftime("%Y-%m-%d")
-
-#出力ファイル名を指定
-unsei_filename = r"./results/unsei_{0}.txt".format(hizuke)
-```
----
-
-【サンプルプログラム】(3/3)
-```python
-#出力ファイル名でファイルオープンし結果を書き込み
-try:
-    f = open(unsei_filename,'x')
-
-#例外をキャッチした場合の処理内容
-except FileExistsError:
-        sys.stderr.write("エラー:同じ名前のファイルが既に存在しています。\n")
-        sys.exit(1)
-except FileNotFoundError:
-        sys.stderr.write("エラー:ディレクトリが見つかりません。\n")
-        sys.exit(1)
-
-#おみくじの結果を書き込み
-f.write("===============================\n")
-for i in unsei:
-    f.write(i)
-    f.write("\n")
-f.write(hizuke)
-f.write("\n")
-f.write("===============================\n")
-f.close()
-
-print("おみくじの結果を{0}に書込みました！".format(unsei_filename))
-```
----
-+ 実行(windowsの場合)
-
-```
-py 04_summary.py
-```
-+ 実行(その他の場合)
-
-```
-python3 04_summary.py
-```
----
-+ 出力結果（unsei_2019-02-03.txt）
-```
-===============================
-大吉
-待人：すぐに来る
-失物：足元にあり
-恋愛：深入りするな
-転居：無理せず待て
-
-2019-02-03
-===============================
-```
-```
-===============================
-吉
-待人：待てば来る
-失物：見つからず
-恋愛：よい出会いあり
-転居：南東がよし
-
-2019-02-03
-===============================
-```
-```
-===============================
-凶
-待人：来ない
-失物：増える
-恋愛：刺される
-転居：燃える
-
-2019-02-03
-===============================
-```
-なかなか大吉がでませんでした。。
-
----
 # みなさん長い間お疲れ様でした！
 
 ---
