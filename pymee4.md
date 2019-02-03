@@ -372,8 +372,8 @@ datetimeには大きく分けて、3種類のクラスがあります。<br>
 |time|時刻を表現|
 |datetime|日付と時刻を合わせて表現|
 
-
-まずは、datetimeモジュール全体をimportしたいときの方法です。
+<br>
+では、datetimeモジュール全体をimportしてみましょう。
 
 ```
 import datetime
@@ -383,15 +383,15 @@ import datetime
 
 ---
 
-しかし、モジュールによってはたくさんのpythonファイルが含まれており、pythonの実行速度を落としてしまうこともあります。
-そんな時、使用したい機能（クラス）だけimportできればいいですね。<br>
+ただ、モジュールによってはたくさんのpythonファイルが含まれており、全てimportすることでpythonの実行速度を落としてしまうこともあります。
+そんな場合に備えて、使用したい機能（クラス）だけimportできればいいですね。<br>
 <br>
 そこで、以下の書式でクラスだけを呼び出すことができます。<br>
 <br>
 ```
 from モジュール import クラス
 ```
-これにしたがい、
+これに従い、
 
 ```
 from datetime import datetime
