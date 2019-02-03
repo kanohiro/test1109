@@ -403,7 +403,7 @@ from datetime import datetime
 では実際にコードに組み込んでみましょう。
 
 ---
-# サンプルプログラムを作ってみましょう(module)
+## サンプルプログラムを作ってみましょう(module)
 
 【事前準備】<br>
 先ほど作成した、02_file_write.pyをコピーして、03_import.py を作成してください。<br>
