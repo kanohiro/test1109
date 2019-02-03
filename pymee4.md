@@ -364,10 +364,10 @@ import モジュール
 datetimeモジュールは、日付や時刻に対して色々な操作をすることが出来るモジュールです。<br>
 datetimeモジュールには、日付や時刻を扱うためのクラスが用意されています。<br>
 
-|header1|header2|header3|
-|:--|--:|:--:|
-|align left|align right|align center|
-|a|b|c|
+|クラス|説明|
+|date|主に日付を表現|
+|time|時刻を表現|
+|datetime|日付と時刻を合わせて表現|
 
 
 ```python
