@@ -372,10 +372,13 @@ datetimeには大きく分けて、3種類のクラスがあります。<br>
 |time|時刻を表現|
 |datetime|日付と時刻を合わせて表現|
 
+
 まずは、datetimeモジュール全体をimportしたいときの方法です。
+
 ```
 import datetime
 ```
+
 これで、datetimeモジュールの機能がすべて使えるようになりました。
 
 ---
