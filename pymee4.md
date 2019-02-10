@@ -299,7 +299,7 @@ f.close()
 import sys
 
 #引数に読み込むファイルを指定してオープン
-omikuji = open(sys.argv[1], "r",encoding="utf-8")
+omikuji = open("write_file.txt", "r",encoding="utf-8")
 
 #書き込み先のファイルを新規作成してオープン
 f = open('write_kekka.txt','x')
@@ -323,12 +323,12 @@ f.close()
 + 実行(windowsの場合)
 
 ```
-py 02_file_write.py write_file.txt
+py 02_file_write.py
 ```
 + 実行(その他の場合)
 
 ```
-python3 02_file_write.py write_file.txt
+python3 02_file_write.py
 ```
 + 出力結果（write_kekka.txt）
 ```
@@ -345,8 +345,8 @@ python3 02_file_write.py write_file.txt
 
 ---
 # importとは
-importとは、pythonで書かれたコードを再利用するために使用します。<br>
-importはコードの先頭に以下のように記述します。<br>
+- importとは、pythonで書かれたコードを再利用するために使用します。
+- importはコードの先頭に以下のように記述します。
 
 ```
 import モジュール
@@ -354,14 +354,9 @@ import モジュール
 ---
 # モジュール（module）とは
 
-モジュールとは、pythonのファイル（.py）の事です。<br>
-
-ある程度長いプログラムをpythonで書く場合などは、コマンドラインではなく.pyファイルに実行したい内容を保存します。
-その保存された.pyファイルは、他のpythonのプログラムからimportで呼び出して使うことが出来ます。<br>
-<br>
-これをモジュールと呼びます。<br>
-<br>
-つまり、実行させたい機能を他の.pyファイルに書いておき、それをimportで呼び出すイメージです。
+- モジュールとは、pythonのファイル（.py）の事です。
+- ある程度長いプログラムをpythonで書く場合などは、コマンドラインではなく.pyファイルに実行したい内容を保存します。その保存された.pyファイルは、他のpythonのプログラムからimportで呼び出して使うことが出来ます。これをモジュールと呼びます。
+- つまり、実行させたい機能を他の.pyファイルに書いておき、それをimportで呼び出すイメージです。
 
 ---
 
@@ -463,8 +458,18 @@ f.write("===============================\n")
 #ファイルクローズ
 f.close()
 ```
-
 ---
+
++ 実行(windowsの場合)
+
+```
+py 03_import.py
+```
++ 実行(その他の場合)
+
+```
+python3 03_import.py
+```
 
 + 出力結果（import_kekka.txt）
 ```
@@ -477,7 +482,6 @@ f.close()
 2019-02-03
 ===============================
 ```
-
 先ほどのファイルの下部に日付が書き込まれましたね！
 
 ---
