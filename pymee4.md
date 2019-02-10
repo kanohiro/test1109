@@ -590,7 +590,7 @@ f.write("===============================\n")
 for i in unsei:
     f.write(i)
     f.write("\n")
-f.write(hizuke)
+f.write("おみくじを引いた日:{0}".format(hizuke))
 f.write("\n")
 f.write("===============================\n")
 f.close()
