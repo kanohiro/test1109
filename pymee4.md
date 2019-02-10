@@ -502,7 +502,7 @@ python3 03_import.py
 ```
 omikujifile.txt
 ```
-また、作業フォルダ内に以下フォルダを作成してください。
+また、作業フォルダ内に以下フォルダを作成してください。(出力結果が保存されます。)
 
 + フォルダ名
 ```
@@ -525,7 +525,6 @@ results
 ```python
 import sys
 import random
-import os
 from datetime import datetime
 
 #引数にファイルが一つ指定されていることをチェック
