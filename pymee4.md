@@ -596,12 +596,12 @@ print("おみくじの結果を{0}に書込みました！".format(unsei_filenam
 + 実行(windowsの場合)
 
 ```
-py 04_summary.py
+py 04_summary.py omikujifile.txt
 ```
 + 実行(その他の場合)
 
 ```
-python3 04_summary.py
+python3 04_summary.py omikujifile.txt
 ```
 ---
 + 出力結果（unsei_2019-02-03.txt）
