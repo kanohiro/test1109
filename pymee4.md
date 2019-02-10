@@ -187,7 +187,7 @@ import random
 #ファイルを格納するためのリストを準備
 WhileList = []
 
-#引数に読み込むファイルを指定してオープン
+#読み込むファイルを指定してオープン
 f = open("while.txt", "r",encoding="utf-8")
 
 #readline()で1行ずつ読み込み
@@ -273,7 +273,7 @@ f.close()
 ```python
 import sys
 
-#引数に読み込むファイルを指定してオープン
+#読み込むファイルを指定してオープン
 omikuji = open("write_file.txt", "r",encoding="utf-8")
 
 #書き込み先のファイルを新規作成してオープン
@@ -392,7 +392,7 @@ import sys
 from datetime import datetime
 ###################################################
 
-#引数に読み込むファイルを指定してオープン
+#読み込むファイルを指定してオープン
 omikuji = open("write_file.txt", "r",encoding="utf-8")
 
 ##################### 以下挿入 #####################
