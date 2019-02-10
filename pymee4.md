@@ -373,7 +373,7 @@ import モジュール
 |datetime|日付と時刻を合わせて表現|
 |timedelta|時間差を表現|
 
-- では、datetimeモジュール全体をimportしてみましょう。
+- まずは、datetimeモジュール全体をimportしてみましょう。
 
 ```
 import datetime
