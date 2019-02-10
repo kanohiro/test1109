@@ -271,7 +271,6 @@ f.write('楽しいPython')
 f.close()
 
 ```
----
 + 出力結果
 ```
 楽しいPython
