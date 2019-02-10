@@ -90,7 +90,7 @@ inputAll.close()
 恋愛：深入りするな
 転居：無理せず待て
 ```
-+ ファイル読み込み元(inputSample.txt)からファイルから読み込んだ中身の格納先(inputAll)へ一行ずつリスト形式で格納されました。
++ ファイル読み込み元(inputSample.txt)から読み込んだ中身の格納先(inputAll)へ一行ずつリスト形式で格納されました。
 + ソースコード(.pyファイル)を配置したフォルダと同じフォルダに配置された「inputSample.txt」を読み込む事ができました。
 ---
 ![](./img/fileio_flow.png)
