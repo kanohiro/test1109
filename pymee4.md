@@ -142,11 +142,7 @@ except:
 ![](./img/while.png)
 
 ---
-【構文(while文)】
-```
-while 条件:
-条件を満たす(True)間に行う処理
-```
+
 【例文(while文)】
 ```python
 #ランダムで値を取り出す為の準備
