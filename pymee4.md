@@ -765,7 +765,7 @@ format関数は、変数を文字列へ埋め込みたいときに使われま�
 ```
 print("おみくじの結果を{0}に書込みました！".format(unsei_filename))
 ```
-+ 変数"unsei_filename"の値が {0}の部分に挿入されます。
+変数"unsei_filename"の値が {0}の部分に挿入されます。
 
 ---
 
