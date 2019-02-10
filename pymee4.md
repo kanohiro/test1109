@@ -513,7 +513,7 @@ results
 + ファイル名
 
 ```
-04_summary.py
+04_summary_4th.py
 ```
 ---
 
@@ -596,12 +596,12 @@ print("おみくじの結果を{0}に書込みました！".format(unsei_filenam
 + 実行(windowsの場合)
 
 ```
-py 04_summary.py omikujifile.txt
+py 04_summary_4th.py omikujifile.txt
 ```
 + 実行(その他の場合)
 
 ```
-python3 04_summary.py omikujifile.txt
+python3 04_summary_4th.py omikujifile.txt
 ```
 ---
 + 出力結果（unsei_2019-02-03.txt）
