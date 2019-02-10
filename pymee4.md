@@ -207,7 +207,7 @@ import random
 WhileList = []
 
 #引数に読み込むファイルを指定してオープン
-f = open(sys.argv[1], "r",encoding="utf-8")
+f = open("while.txt", "r",encoding="utf-8")
 
 #readline()で1行ずつ読み込み
 line = f.readline()
@@ -243,8 +243,12 @@ python3 01_while.py
 大吉
 ```
 ---
-引数に指定した "omikujifile.txt" から1行ずつ取り出していき、EOFの行に差し当たると条件を満たさないので取り出さずに処理を停止します。<br>
-さらに出来上がったWhileListからランダムに1行取り出し、表示しています。<br>
+- 読み込んだ"while.txt" から1行ずつ取り出していき、EOFの行に差し当たると条件を満たさないので取り出さずに処理を停止します。
+- 出来上がったWhileListからランダムに1行取り出し、表示しています。
+> while line != "EOF\n"
+- \n は改行を示しています。
+
+
 
 ---
 # ファイルを書き込んでみよう
