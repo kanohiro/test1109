@@ -231,12 +231,12 @@ print(kekka)
 + 実行(windowsの場合)
 
 ```
-py 01_while.py while.txt
+py 01_while.py
 ```
 + 実行(その他の場合)
 
 ```
-python3 01_while.py while.txt
+python3 01_while.py
 ```
 + 出力結果
 ```
