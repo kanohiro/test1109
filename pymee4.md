@@ -540,7 +540,7 @@ except FileNotFoundError:
         sys.exit(1)
 #上記2つのエラー以外のエラーをキャッチした場合の処理内容
 #tracebackモジュールをimportしてエラー内容を出力
-except
+except:
     import traceback
     traceback.print_exc()
 
