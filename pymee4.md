@@ -380,7 +380,6 @@ from datetime import datetime
 1. 作成した`03_import.py`に以下プログラム中の「以下挿入」もしくは「書き込み先ファイル名変更」とある部分を追記・変更して保存
 
 ```python
-
 ##################### 以下挿入 #####################
 #datetimeパッケージからdatetimeモジュールをimport
 from datetime import datetime
@@ -539,6 +538,11 @@ except FileExistsError:
 except FileNotFoundError:
         sys.stderr.write("エラー:ディレクトリが見つかりません。\n")
         sys.exit(1)
+#上記2つのエラー以外のエラーをキャッチした場合の処理内容
+#tracebackモジュールをimportしてエラー内容を出力
+except
+    import traceback
+    traceback.print_exc()
 
 #おみくじの結果を書き込み
 f.write("===============================\n")
@@ -633,7 +637,7 @@ Pythonでファイルの内容を取得するときには、以下の手順が�
 + コマンドライン引数とは、プログラムの挙動を変えたい場合に、プログラム実行時のコマンドラインで指定する引数のことです。
 
 ```
-$ python XXXX.py 引数1 引数2...
+$ py XXXX.py 引数1 引数2...
 ```
 今回のまとめコードでは、コマンドライン引数として「omokujifile.txt」を指定しています。
 
