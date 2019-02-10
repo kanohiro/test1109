@@ -69,11 +69,6 @@ for number in sampleList:
 # ファイル読み込み
 ```python
 #読み込むファイルを指定。
-#この書式で記載すると以下の通りに値が格納される。
-#　・ファイル読み込み元：
-#      inputSample.txt
-#　・ファイルから読み込んだ中身の格納先：
-#      inputAll(一行ずつリスト形式で格納される)
 inputAll = open("inputSample.txt", "r",encoding="utf-8")
 
 #ファイルから読み込んだ中身を一行ずつfor文で出力する。
@@ -84,7 +79,6 @@ for inputLine in inputAll:
 print('\n')
 
 #ファイルを読み込んだ後はクローズ処理を記載する。
-#これを書かないとメモリにゴミが残る。(動作が重くなっていく)
 inputAll.close()
 ```
 ---
@@ -96,7 +90,7 @@ inputAll.close()
 恋愛：深入りするな
 転居：無理せず待て
 ```
----
++ ファイル読み込み元(inputSample.txt)からファイルから読み込んだ中身の格納先(inputAll)へ一行ずつリスト形式で格納されました。
 + ソースコード(.pyファイル)を配置したフォルダと同じフォルダに配置された「inputSample.txt」を読み込む事ができました。
 ---
 ![](./img/fileio_flow.png)
