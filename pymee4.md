@@ -811,6 +811,28 @@ with open("sample.txt", "r") as f:
 
 ---
 
+# 問題解答
+
+## 問題(while文)
+
+```python
+num = 0
+while num<=50:
+    print(num)
+    num+=2
+```
++ 出力結果
+```
+0
+2
+4
+...
+48
+50
+```
+
+---
+
 # みなさん長い間お疲れ様でした！
 
 ---
