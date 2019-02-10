@@ -351,7 +351,6 @@ python3 02_file_write.py
 ```
 import モジュール
 ```
----
 # モジュール（module）とは
 
 - モジュールとは、pythonのファイル（.py）の事です。
