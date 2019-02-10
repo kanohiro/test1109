@@ -566,7 +566,7 @@ py 04_summary_4th.py omikujifile.txt
 python3 04_summary_4th.py omikujifile.txt
 ```
 ---
-+ 出力結果（unsei_2019-02-03.txt）
++ 出力結果（unsei_2019-02-10.txt）
 ```
 ===============================
 大吉
