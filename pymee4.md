@@ -399,7 +399,7 @@ python3 02_file_write.py
 【問題(ファイル書き込み)】
 + 任意の文字列を`write_kekka.txt`に追記してください。
   + ヒント
-   + 先ほどの書き込みモード表を参照
+    + 先ほどの書き込みモード表を参照
 
 
 ---
@@ -572,8 +572,8 @@ python3 03_import.py
 ---
 【問題(モジュール)】
 + 現在の1日後の時刻を表示するプログラムを作成してください。
- + ヒント
-  + timedeltaで1日後を示す：datetime.timedelta(days=1)
+  + ヒント
+    + timedeltaで1日後を示す：datetime.timedelta(days=1)
 
 ---
 ## まとめプログラムで使うことを予習しましょう
