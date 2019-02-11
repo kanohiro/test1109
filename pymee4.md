@@ -451,6 +451,30 @@ from datetime import datetime
 + datetimeパッケージのdatetimeモジュールのみ呼び出すことができます。
 
 ---
+
+では実際に現在の日付や時刻を取得してみましょう。
+```python
+from datetime import datetime
+
+date1 = datetime.now()
+print(date1)
+```
++ 出力結果
+```
+2019-02-11 13:32:35.629794
+```
++ 現在の日付と時刻が取得できました。
+
+次に、フォーマットを変更してみましょう。strftimeを使って以下のプログラムで変更できます。
+```python
+from datetime import datetime
+
+hizuke = datetime.now().strftime("%Y-%m-%d")
+print(hizuke)
+```
++ datetime.nowで取得した日付と時刻を "Y-M-D" というフォーマットに変更できました。
+
+---
 ## サンプルプログラムを作ってみましょう(モジュール)
 
 【作成手順】
