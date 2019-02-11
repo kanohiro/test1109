@@ -896,7 +896,7 @@ while num<=50:
 50
 ```
 
---
+---
 
 ## ファイル書き込み
 
@@ -920,7 +920,8 @@ f.close()
 今日も頑張ろう！
 ```
 ---
-## module
+
+## モジュール
 
 ```python
 import datetime
